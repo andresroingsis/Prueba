@@ -8,10 +8,10 @@ EXPOSE 443
 
 FROM microsoft/dotnet:2.2-sdk-nanoserver-1803 AS build
 WORKDIR /src
-COPY ["Prueba.Web/Prueba.Web.csproj", "Prueba.Web/"]
-RUN dotnet restore "Prueba.Web/Prueba.Web.csproj"
+COPY ["src/Prueba.Web/Prueba.Web.csproj", "src/Prueba.Web/"]
+RUN dotnet restore "src/Prueba.Web/Prueba.Web.csproj"
 COPY . .
-WORKDIR "/src/Prueba.Web"
+WORKDIR "/src/src/Prueba.Web"
 RUN dotnet build "Prueba.Web.csproj" -c Release -o /app
 
 FROM build AS publish
