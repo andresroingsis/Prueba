@@ -11,5 +11,7 @@ namespace Ci2HRodriguez.Servicios.Auxiliares
         public const bool EstadoDeTareaFinalizada = true;
 
         public const bool EstadoDeTareaNoFinalizada = false;
+
+        public const bool NoConsultarTodasLasTareas = false;
     }
 }

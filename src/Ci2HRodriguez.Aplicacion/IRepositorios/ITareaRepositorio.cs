@@ -10,6 +10,14 @@ namespace Ci2HRodriguez.Aplicacion.IRepositorios
     /// </summary>
     public interface ITareaRepositorio
     {
-        Task<IReadOnlyList<Tarea>> ListarTareasDelUsuarioAsync(string idDelUsuario);
+        Task<IReadOnlyList<Tarea>> ListarTareasConParametrosAsync(string idDelUsuario, bool todasLasTareas, bool? tareasFinalizadas);
+
+        Task<Tarea> AgregarTareaAsync(Tarea tareaARegistrar);
+
+        Task<Tarea> ActualizarTareaAsync(Tarea tareaAModificar);
+
+        Task<Tarea> ObtenerTareaPorIdAsync(Guid idDeLaTarea);
+
+        Task BorrarTareaAsync(Guid idDeLaTarea);
     }
 }

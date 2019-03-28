@@ -24,5 +24,12 @@ namespace Ci2HRodriguez.Aplicacion.EntidadesDePersistencia
         /// </summary>
         public string IdFkUsuario { get; set; }
         public Usuario UsuarioAsociado { get; set; }
+
+        public void ActualizarTarea(string descripcionDeLaTarea, DateTime fechaDeVencimiento, bool EsTareaFinalizada)
+        {
+            Descripcion = descripcionDeLaTarea;
+            EstadoFinalizacion = EsTareaFinalizada;
+            FechaDeVencimiento = fechaDeVencimiento;
+        }
     }
 }

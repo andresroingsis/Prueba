@@ -19,16 +19,43 @@ namespace Ci2HRodriguez.Infraestructura.Repositorios
 
         }
 
-        public async Task<IReadOnlyList<Tarea>> ListarTareasDelUsuarioAsync(string idDelUsuario)
+        public async Task<Tarea> ActualizarTareaAsync(Tarea tareaAModificar)
+        {
+            await ActualizarAsync(tareaAModificar);
+            return await ObtenerEntidadPorIdAsync(tareaAModificar.IdTarea);
+        }
+
+        public async Task<Tarea> AgregarTareaAsync(Tarea tareaARegistrar)
+        {
+            return await AgregarAsync(tareaARegistrar);
+        }
+
+        public async Task BorrarTareaAsync(Guid idDeLaTarea)
+        {
+            var tareaABorrar = await ObtenerEntidadPorIdAsync(idDeLaTarea);
+            await EliminarAsync(tareaABorrar);
+        }
+
+        public async Task<IReadOnlyList<Tarea>> ListarTareasConParametrosAsync(string idDelUsuario, bool todasLasTareas, bool? tareasFinalizadas)
         {
             IQueryable<Tarea> consultaDeLasTareas = _ContextoDeDatos.Tareas;
 
-            if (!string.IsNullOrWhiteSpace(idDelUsuario))
+            if (!todasLasTareas)
             {
                 consultaDeLasTareas = consultaDeLasTareas.Where(tarea => tarea.IdFkUsuario == idDelUsuario);
             }
 
+            if (tareasFinalizadas != null)
+            {
+                consultaDeLasTareas = consultaDeLasTareas.Where(tarea => tarea.EstadoFinalizacion == tareasFinalizadas);
+            }
+
             return await consultaDeLasTareas.AsNoTracking().ToListAsync();
+        }
+
+        public async Task<Tarea> ObtenerTareaPorIdAsync(Guid idDeLaTarea)
+        {
+            return await ObtenerEntidadPorIdAsync(idDeLaTarea);
         }
     }
 }

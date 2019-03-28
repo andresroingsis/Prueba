@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <UserSecretsId>aspnet-Ci2HRodriguez.Web-2EA15397-7B42-410F-AAB1-D633A024B398</UserSecretsId>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="8.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.0" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Ci2HRodriguez.Aplicacion\Ci2HRodriguez.Aplicacion.csproj" />
+    <ProjectReference Include="..\Ci2HRodriguez.Infraestructura\Ci2HRodriguez.Infraestructura.csproj" />
+    <ProjectReference Include="..\Ci2HRodriguez.Servicios\Ci2HRodriguez.Servicios.csproj" />
+  </ItemGroup>
+
+</Project>
